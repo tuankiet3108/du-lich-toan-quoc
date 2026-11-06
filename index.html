@@ -20,97 +20,97 @@ body {
     justify-content: center;
     align-items: center;
     background:
-        radial-gradient(circle at 0% 100%, #f8c4ac, transparent 35%),
-        radial-gradient(circle at 100% 0%, #f8d4c6, transparent 25%),
-        #fafafa;
+        radial-gradient(circle at 100% 0%, #ffd0bc 0%, transparent 30%),
+        #fbfbfb;
 }
 
 .container {
     width: 100%;
-    max-width: 1280px;
-    min-height: 800px;
+    max-width: 1100px;
+    min-height: 650px;
     display: grid;
-    grid-template-columns: 1.15fr 1fr;
-    gap: 70px;
-    padding: 32px;
+    grid-template-columns: 1.05fr 1fr;
+    gap: 50px;
+    padding: 20px;
+    align-items: center;
 }
 
+/* Khối bên trái: Ảnh + Gradient hiệu ứng chuẩn theo hình gốc */
 .left-panel {
     position: relative;
-    border-radius: 32px;
+    width: 100%;
+    height: 600px;
+    border-radius: 28px;
     overflow: hidden;
-    background-image:
-        linear-gradient(to bottom, transparent 35%,
-        rgba(255,116,48,.35) 58%, #ff803e 85%, #8db2c6 100%),
+    background-image: 
+        linear-gradient(to bottom, transparent 40%, rgba(255, 114, 52, 0.75) 75%, rgba(125, 155, 185, 0.85) 100%),
         url('https://images.unsplash.com/photo-1519681393784-d120267933ba?w=1200');
     background-size: cover;
     background-position: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
 }
 
 .logo {
     position: absolute;
-    top: 58px;
-    left: 60px;
+    top: 40px;
+    left: 45px;
     display: flex;
     align-items: center;
-    gap: 15px;
-    color: #ff7537;
-    font-size: 20px;
-    font-weight: 600;
+    gap: 10px;
+    color: #ff6a39;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
 }
 
 .logo-icon {
-    font-size: 34px;
+    font-size: 24px;
+    color: #ff6a39;
 }
 
-.arrow {
-    position: absolute;
-    bottom: 75px;
-    left: 115px;
-    color: #ff7537;
-    font-size: 30px;
-}
-
+/* Khối bên phải: Form đăng nhập */
 .right-panel {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 30px;
+    padding: 20px;
 }
 
 .header {
     text-align: center;
-    margin-bottom: 54px;
+    margin-bottom: 40px;
 }
 
 .header h1 {
-    font-size: 48px;
+    font-size: 38px;
     font-weight: 700;
-    color: #ff793c;
-    white-space: nowrap;
+    color: #ff6a39;
+    letter-spacing: -0.5px;
 }
 
 .header p {
-    font-size: 25px;
+    font-size: 20px;
     font-weight: 300;
+    color: #333;
     margin-top: 6px;
 }
 
 .login-form {
     width: 100%;
-    max-width: 394px;
+    max-width: 360px;
 }
 
 .form-group {
-    margin-bottom: 28px;
+    margin-bottom: 22px;
 }
 
 .form-group label {
     display: block;
-    font-size: 18px;
+    font-size: 15px;
     font-weight: 700;
-    margin-bottom: 18px;
+    color: #222;
+    margin-bottom: 10px;
 }
 
 .required {
@@ -123,74 +123,84 @@ body {
 
 .input-box input {
     width: 100%;
-    height: 57px;
-    padding: 0 20px;
-    border: 1px solid #888;
-    border-radius: 14px;
+    height: 48px;
+    padding: 0 45px 0 16px;
+    border: 1px solid #ccc;
+    border-radius: 12px;
     outline: none;
-    background: transparent;
+    background: #fff;
     font-size: 14px;
+    color: #333;
+    transition: border-color 0.2s;
+}
+
+.input-box input::placeholder {
+    color: #aaa;
 }
 
 .input-box input:focus {
-    border-color: #ff793c;
+    border-color: #ff6a39;
 }
 
 .toggle-password {
     position: absolute;
-    right: 20px;
+    right: 14px;
     top: 50%;
     transform: translateY(-50%);
     cursor: pointer;
-    font-size: 22px;
+    font-size: 18px;
     color: #777;
+    user-select: none;
 }
 
 .forgot {
     display: block;
     text-align: right;
-    margin-top: -5px;
-    margin-bottom: 30px;
+    margin-top: -8px;
+    margin-bottom: 28px;
     color: #888;
     text-decoration: none;
-    font-size: 14px;
+    font-size: 13px;
 }
 
 .forgot:hover {
-    color: #ff793c;
+    color: #ff6a39;
 }
 
 .buttons {
     display: flex;
-    justify-content: center;
-    gap: 40px;
+    justify-content: space-between;
+    gap: 16px;
 }
 
 .btn {
-    width: 157px;
-    height: 53px;
+    flex: 1;
+    height: 46px;
     border: none;
-    border-radius: 15px;
-    background: #ff793c;
+    border-radius: 12px;
+    background: #ff6a39;
     color: white;
     font-size: 14px;
+    font-weight: 500;
     cursor: pointer;
-    transition: .3s;
+    transition: background 0.2s, transform 0.1s;
 }
 
 .btn:hover {
-    background: #ed6228;
-    transform: translateY(-2px);
+    background: #e65525;
+}
+
+.btn:active {
+    transform: scale(0.98);
 }
 
 .divider {
     display: flex;
     align-items: center;
-    gap: 16px;
-    margin: 42px 0 28px;
-    color: #888;
-    font-size: 14px;
-    white-space: nowrap;
+    gap: 14px;
+    margin: 30px 0 24px;
+    color: #999;
+    font-size: 13px;
 }
 
 .divider::before,
@@ -198,80 +208,49 @@ body {
     content: "";
     height: 1px;
     flex: 1;
-    background: #999;
+    background: #e0e0e0;
 }
 
 .google-btn {
-    width: 114px;
-    height: 57px;
-    border: 1px solid #888;
-    border-radius: 15px;
-    background: transparent;
+    width: 90px;
+    height: 46px;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    background: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: auto;
+    margin: 0 auto;
     cursor: pointer;
+    transition: background 0.2s;
+}
+
+.google-btn:hover {
+    background: #f5f5f5;
 }
 
 .google-btn img {
-    width: 35px;
-    height: 35px;
+    width: 22px;
+    height: 22px;
 }
 
+/* Responsive cho thiết bị di động */
 @media(max-width: 900px) {
     .container {
         grid-template-columns: 1fr;
-        padding: 20px;
         gap: 20px;
     }
 
     .left-panel {
-        min-height: 300px;
-    }
-
-    .right-panel {
-        padding: 30px 15px;
+        height: 250px;
     }
 
     .header h1 {
-        font-size: 36px;
+        font-size: 30px;
     }
 
     .header p {
-        font-size: 20px;
-    }
-}
-
-@media(max-width: 480px) {
-    .left-panel {
-        min-height: 200px;
-    }
-
-    .logo {
-        top: 25px;
-        left: 25px;
-        font-size: 16px;
-    }
-
-    .header h1 {
-        font-size: 27px;
-    }
-
-    .header p {
-        font-size: 17px;
-    }
-
-    .buttons {
-        gap: 12px;
-    }
-
-    .btn {
-        width: 50%;
-    }
-
-    .form-group label {
-        font-size: 15px;
+        font-size: 18px;
     }
 }
 </style>
@@ -281,14 +260,15 @@ body {
 
 <div class="container">
 
+    <!-- Bên trái: Hình ảnh và Logo -->
     <div class="left-panel">
         <div class="logo">
             <span class="logo-icon">⬡</span>
             <span>TRAVEL.ECO</span>
         </div>
-        <div class="arrow">↗</div>
     </div>
 
+    <!-- Bên phải: Form đăng nhập -->
     <div class="right-panel">
 
         <div class="header">
@@ -301,34 +281,29 @@ body {
             <div class="form-group">
                 <label>Số điện thoại hoặc email <span class="required">(*)</span></label>
                 <div class="input-box">
-                    <input type="text" id="email"
-                    placeholder="Số điện thoại hoặc email" required>
+                    <input type="text" id="email" placeholder="Số điện thoại hoặc email" required>
                 </div>
             </div>
 
             <div class="form-group">
                 <label>Mật khẩu <span class="required">(*)</span></label>
                 <div class="input-box">
-                    <input type="password" id="password"
-                    placeholder="Nhập mật khẩu" required>
-                    <span class="toggle-password"
-                    onclick="togglePassword()" id="eye">👁</span>
+                    <input type="password" id="password" placeholder="Nhập mật khẩu" required>
+                    <span class="toggle-password" onclick="togglePassword()" id="eye">👁</span>
                 </div>
             </div>
 
-            <a href="#" class="forgot"
-            onclick="alert('Chức năng quên mật khẩu đang được phát triển'); return false;">
+            <a href="#" class="forgot" onclick="alert('Chức năng quên mật khẩu đang được phát triển!'); return false;">
                 Forgot Password?
             </a>
 
             <div class="buttons">
-                <!-- Nút Đăng kí chuyển hướng đến register.html -->
-                <button type="button" class="btn"
-                onclick="window.location.href='register.html'">
+                <!-- Nút Đăng kí ngay chuyển trang -->
+                <button type="button" class="btn" onclick="window.location.href='register.html'">
                     Đăng kí ngay
                 </button>
 
-                <!-- Nút Đăng nhập kích hoạt submit form -->
+                <!-- Nút Đăng nhập gửi form và chuyển trang -->
                 <button type="submit" class="btn">
                     Đăng nhập
                 </button>
@@ -336,8 +311,7 @@ body {
 
             <div class="divider">or continue with</div>
 
-            <button type="button" class="google-btn"
-            onclick="alert('Cần tích hợp Google Authentication')">
+            <button type="button" class="google-btn" onclick="alert('Đang kết nối Google Authentication...')">
                 <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google">
             </button>
 
@@ -346,11 +320,13 @@ body {
 </div>
 
 <script>
+// Chức năng Ẩn/Hiện mật khẩu
 function togglePassword() {
-    const password = document.getElementById("password");
-    password.type = password.type === "password" ? "text" : "password";
+    const passwordInput = document.getElementById("password");
+    passwordInput.type = passwordInput.type === "password" ? "text" : "password";
 }
 
+// Xử lý sự kiện đăng nhập và chuyển sang trang mới
 document.getElementById("loginForm").addEventListener("submit", function(e) {
     e.preventDefault();
 
@@ -362,8 +338,8 @@ document.getElementById("loginForm").addEventListener("submit", function(e) {
         return;
     }
 
-    // Chuyển sang trang mới sau khi bấm đăng nhập thành công
-    window.location.href = "dashboard.html"; 
+    // Chuyển sang trang đích sau khi đăng nhập thành công
+    window.location.href = "dashboard.html";
 });
 </script>
 

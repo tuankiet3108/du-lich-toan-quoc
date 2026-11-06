@@ -574,6 +574,325 @@ button:hover {
         Đăng xuất
     </button>
 </main>
+    
+<!-- Nút Google -->
+<button type="button" class="google-btn" id="googleLogin">
+    <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
+         alt="Google" width="35">
+</button>
+
+<script type="module">
+import {
+    auth,
+    signInWithEmailAndPassword,
+    sendPasswordResetEmail,
+    signInWithPopup,
+    googleProvider
+} from "./firebase-config.js";
+
+const loginForm = document.getElementById("loginForm");
+
+loginForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value;
+
+    try {
+        await signInWithEmailAndPassword(auth, email, password);
+
+        alert("Đăng nhập thành công!");
+        window.location.href = "home.html";
+
+    } catch (error) {
+        alert("Đăng nhập thất bại: " + error.message);
+    }
+});
+
+// Quên mật khẩu
+document.querySelector(".forgot").addEventListener("click", async (e) => {
+    e.preventDefault();
+
+    const email = document.getElementById("email").value.trim();
+
+    if (!email) {
+        alert("Hãy nhập email trước!");
+        return;
+    }
+
+    try {
+        await sendPasswordResetEmail(auth, email);
+        alert("Đã gửi email đặt lại mật khẩu!");
+    } catch (error) {
+        alert("Lỗi: " + error.message);
+    }
+});
+
+// Đăng nhập Google
+document.getElementById("googleLogin").addEventListener("click", async () => {
+    try {
+        await signInWithPopup(auth, googleProvider);
+        window.location.href = "home.html";
+    } catch (error) {
+        alert("Google Login thất bại: " + error.message);
+    }
+});
+</script>
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Đăng ký TRAVEL.ECO</title>
+
+<style>
+* { box-sizing: border-box; font-family: Arial,sans-serif; }
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(135deg,#ffe2d4,#fff);
+}
+
+.form-box {
+    width: 400px;
+    max-width: 92%;
+    padding: 35px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 5px 30px #0001;
+}
+
+h1 { color: #ff793c; text-align: center; }
+
+input {
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    border: 1px solid #aaa;
+    border-radius: 10px;
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 10px;
+    background: #ff793c;
+    color: white;
+    cursor: pointer;
+}
+
+p { text-align: center; }
+a { color: #ff793c; text-decoration: none; }
+</style>
+</head>
+
+<body>
+
+<div class="form-box">
+    <h1>TRAVEL.ECO</h1>
+    <h2>Đăng ký tài khoản</h2>
+
+    <form id="registerForm">
+        <input id="name" type="text"
+               placeholder="Họ và tên" required>
+
+        <input id="email" type="email"
+               placeholder="Email" required>
+
+        <input id="password" type="password"
+               placeholder="Mật khẩu (ít nhất 6 ký tự)" required>
+
+        <input id="confirmPassword" type="password"
+               placeholder="Nhập lại mật khẩu" required>
+
+        <button type="submit" id="registerBtn">
+            Tạo tài khoản
+        </button>
+    </form>
+
+    <p>Đã có tài khoản?
+        <a href="index.html">Đăng nhập ngay</a>
+    </p>
+</div>
+
+<script type="module">
+import {
+    auth,
+    db,
+    createUserWithEmailAndPassword,
+    updateProfile,
+    doc,
+    setDoc,
+    serverTimestamp
+} from "./firebase-config.js";
+
+const form = document.getElementById("registerForm");
+const btn = document.getElementById("registerBtn");
+
+form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value;
+    const confirm = document.getElementById("confirmPassword").value;
+
+    if (password.length < 6) {
+        alert("Mật khẩu phải có ít nhất 6 ký tự!");
+        return;
+    }
+
+    if (password !== confirm) {
+        alert("Mật khẩu nhập lại không khớp!");
+        return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = "Đang tạo tài khoản...";
+
+    try {
+        const credential = await createUserWithEmailAndPassword(
+            auth, email, password
+        );
+
+        await updateProfile(credential.user, {
+            displayName: name
+        });
+
+        await setDoc(doc(db, "users", credential.user.uid), {
+            name: name,
+            email: email,
+            createdAt: serverTimestamp()
+        });
+
+        alert("Đăng ký thành công!");
+
+        window.location.href = "home.html";
+
+    } catch (error) {
+        alert("Đăng ký thất bại: " + error.message);
+        btn.disabled = false;
+        btn.textContent = "Tạo tài khoản";
+    }
+});
+</script>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TRAVEL.ECO - Trang chủ</title>
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: Arial,sans-serif;
+    background: #fff8f4;
+}
+
+header {
+    background: #ff793c;
+    color: white;
+    padding: 20px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 10px;
+    background: white;
+    color: #ff793c;
+    cursor: pointer;
+}
+
+main {
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 30px;
+}
+
+h1 { color: #ff793c; }
+</style>
+</head>
+
+<body>
+
+<header>
+    <h2>TRAVEL.ECO</h2>
+    <button id="logoutBtn">Đăng xuất</button>
+</header>
+
+<main>
+    <h1>Chào mừng đến với TRAVEL.ECO!</h1>
+
+    <h2 id="welcome">Đang tải thông tin...</h2>
+
+    <p>Khám phá những hành trình du lịch tuyệt vời.</p>
+</main>
+
+<script type="module">
+import {
+    auth,
+    db,
+    signOut,
+    onAuthStateChanged,
+    doc,
+    getDoc
+} from "./firebase-config.js";
+
+onAuthStateChanged(auth, async (user) => {
+    if (!user) {
+        window.location.replace("index.html");
+        return;
+    }
+
+    try {
+        const userDoc = await getDoc(doc(db, "users", user.uid));
+
+        const name = userDoc.exists()
+            ? userDoc.data().name
+            : user.displayName || user.email;
+
+        document.getElementById("welcome").textContent =
+            "Xin chào, " + name + "!";
+    } catch (error) {
+        document.getElementById("welcome").textContent =
+            "Xin chào, " + (user.displayName || user.email);
+    }
+});
+
+document.getElementById("logoutBtn").addEventListener("click", async () => {
+    try {
+        await signOut(auth);
+        window.location.replace("index.html");
+    } catch (error) {
+        alert("Đăng xuất thất bại!");
+    }
+});
+</script>
+
+</body>
+</html>
+
 
 </body>
 </html>

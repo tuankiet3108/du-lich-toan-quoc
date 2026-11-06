@@ -2,496 +2,369 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TRAVER.ECO - Đăng nhập</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TRAVEL.ECO - Đăng nhập</title>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Be Vietnam Pro', sans-serif;
+}
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Be Vietnam Pro', sans-serif;
-        }
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background:
+        radial-gradient(circle at 0% 100%, #f8c4ac, transparent 35%),
+        radial-gradient(circle at 100% 0%, #f8d4c6, transparent 25%),
+        #fafafa;
+}
 
-        body {
-            min-height: 100vh;
-            background: linear-gradient(
-                115deg,
-                #fff4ef,
-                #f8f8f8 55%,
-                #fff4ef
-            );
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow-x: hidden;
-        }
+.container {
+    width: 100%;
+    max-width: 1280px;
+    min-height: 800px;
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 70px;
+    padding: 32px;
+}
 
-        .container {
-            width: 100%;
-            min-height: 100vh;
-            display: grid;
-            grid-template-columns: 1.1fr 1fr;
-            align-items: center;
-            padding: 32px;
-            gap: 60px;
-        }
+.left-panel {
+    position: relative;
+    border-radius: 32px;
+    overflow: hidden;
+    background-image:
+        linear-gradient(to bottom, transparent 35%,
+        rgba(255,116,48,.35) 58%, #ff803e 85%, #8db2c6 100%),
+        url('https://images.unsplash.com/photo-1519681393784-d120267933ba?w=1200');
+    background-size: cover;
+    background-position: center;
+}
 
-        /* LEFT IMAGE */
+.logo {
+    position: absolute;
+    top: 58px;
+    left: 60px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: #ff7537;
+    font-size: 20px;
+    font-weight: 600;
+}
 
-        .left-section {
-            height: calc(100vh - 64px);
-            min-height: 500px;
-            border-radius: 32px;
-            position: relative;
-            overflow: hidden;
+.logo-icon {
+    font-size: 34px;
+}
 
-            background-image:
-                linear-gradient(
-                    to bottom,
-                    rgba(255,255,255,0.05) 30%,
-                    rgba(255,117,48,0.95) 85%,
-                    #83b8d1 100%
-                ),
-                url("https://images.unsplash.com/photo-1519681393784-d120267933ba?w=1200");
+.arrow {
+    position: absolute;
+    bottom: 75px;
+    left: 115px;
+    color: #ff7537;
+    font-size: 30px;
+}
 
-            background-size: cover;
-            background-position: center;
-        }
+.right-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
 
-        .brand {
-            position: absolute;
-            top: 55px;
-            left: 60px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            color: #ff7135;
-            font-size: 20px;
-            font-weight: 700;
-        }
+.header {
+    text-align: center;
+    margin-bottom: 54px;
+}
 
-        .brand-icon {
-            font-size: 35px;
-        }
+.header h1 {
+    font-size: 48px;
+    font-weight: 700;
+    color: #ff793c;
+    white-space: nowrap;
+}
 
-        .left-arrow {
-            position: absolute;
-            bottom: 75px;
-            left: 115px;
-            color: #ff7135;
-            font-size: 32px;
-            font-weight: 300;
-        }
+.header p {
+    font-size: 25px;
+    font-weight: 300;
+    margin-top: 6px;
+}
 
-        /* RIGHT SECTION */
+.login-form {
+    width: 100%;
+    max-width: 394px;
+}
 
-        .right-section {
-            width: 100%;
-            max-width: 500px;
-            margin: auto;
-            padding: 20px;
-        }
+.form-group {
+    margin-bottom: 28px;
+}
 
-        .heading {
-            text-align: center;
-            margin-bottom: 52px;
-        }
+.form-group label {
+    display: block;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 18px;
+}
 
-        .heading h1 {
-            color: #ff7839;
-            font-size: clamp(32px, 4vw, 50px);
-            font-weight: 700;
-            letter-spacing: -2px;
-            white-space: nowrap;
-        }
+.required {
+    color: #ff443b;
+}
 
-        .heading p {
-            font-size: 25px;
-            font-weight: 300;
-            color: #111;
-            margin-top: 5px;
-        }
+.input-box {
+    position: relative;
+}
 
-        /* FORM */
+.input-box input {
+    width: 100%;
+    height: 57px;
+    padding: 0 20px;
+    border: 1px solid #888;
+    border-radius: 14px;
+    outline: none;
+    background: transparent;
+    font-size: 14px;
+}
 
-        .form-group {
-            margin-bottom: 28px;
-        }
+.input-box input:focus {
+    border-color: #ff793c;
+}
 
-        .form-group label {
-            display: block;
-            font-size: 19px;
-            font-weight: 700;
-            margin-bottom: 18px;
-            color: #181818;
-        }
+.toggle-password {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 22px;
+    color: #777;
+}
 
-        .required {
-            color: #ff423b;
-        }
+.forgot {
+    display: block;
+    text-align: right;
+    margin-top: -5px;
+    margin-bottom: 30px;
+    color: #888;
+    text-decoration: none;
+    font-size: 14px;
+}
 
-        .input-box {
-            width: 100%;
-            height: 57px;
-            border: 1px solid #888;
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            padding: 0 20px;
-            transition: 0.3s;
-        }
+.forgot:hover {
+    color: #ff793c;
+}
 
-        .input-box:focus-within {
-            border-color: #ff7839;
-            box-shadow: 0 0 0 3px rgba(255,120,57,0.12);
-        }
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
 
-        .input-box input {
-            width: 100%;
-            border: none;
-            outline: none;
-            background: transparent;
-            font-size: 15px;
-            color: #333;
-        }
+.btn {
+    width: 157px;
+    height: 53px;
+    border: none;
+    border-radius: 15px;
+    background: #ff793c;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    transition: .3s;
+}
 
-        .input-box input::placeholder {
-            color: #858585;
-        }
+.btn:hover {
+    background: #ed6228;
+    transform: translateY(-2px);
+}
 
-        .eye {
-            font-size: 23px;
-            color: #777;
-            cursor: pointer;
-            user-select: none;
-        }
+.divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 42px 0 28px;
+    color: #888;
+    font-size: 14px;
+    white-space: nowrap;
+}
 
-        /* FORGOT PASSWORD */
+.divider::before,
+.divider::after {
+    content: "";
+    height: 1px;
+    flex: 1;
+    background: #999;
+}
 
-        .forgot {
-            display: block;
-            text-align: right;
-            color: #777;
-            font-size: 14px;
-            text-decoration: none;
-            margin-top: -5px;
-            margin-bottom: 30px;
-            cursor: pointer;
-        }
+.google-btn {
+    width: 114px;
+    height: 57px;
+    border: 1px solid #888;
+    border-radius: 15px;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    cursor: pointer;
+}
 
-        .forgot:hover {
-            color: #ff7839;
-        }
+.google-btn img {
+    width: 35px;
+    height: 35px;
+}
 
-        /* BUTTONS */
+@media(max-width: 900px) {
+    .container {
+        grid-template-columns: 1fr;
+        padding: 20px;
+        gap: 20px;
+    }
 
-        .button-group {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-        }
+    .left-panel {
+        min-height: 300px;
+    }
 
-        .btn {
-            width: 158px;
-            height: 53px;
-            border: none;
-            border-radius: 14px;
-            background: #ff7839;
-            color: white;
-            font-size: 15px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
+    .right-panel {
+        padding: 30px 15px;
+    }
 
-        .btn:hover {
-            background: #ed6327;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(255,120,57,0.25);
-        }
+    .header h1 {
+        font-size: 36px;
+    }
 
-        /* DIVIDER */
+    .header p {
+        font-size: 20px;
+    }
+}
 
-        .divider {
-            display: flex;
-            align-items: center;
-            gap: 17px;
-            margin: 42px 0 28px;
-            color: #888;
-            font-size: 14px;
-            white-space: nowrap;
-        }
+@media(max-width: 480px) {
+    .left-panel {
+        min-height: 200px;
+    }
 
-        .divider::before,
-        .divider::after {
-            content: "";
-            height: 1px;
-            flex: 1;
-            background: #aaa;
-        }
+    .logo {
+        top: 25px;
+        left: 25px;
+        font-size: 16px;
+    }
 
-        /* GOOGLE */
+    .header h1 {
+        font-size: 27px;
+    }
 
-        .google-wrapper {
-            display: flex;
-            justify-content: center;
-        }
+    .header p {
+        font-size: 17px;
+    }
 
-        .google-btn {
-            width: 114px;
-            height: 57px;
-            border: 1px solid #888;
-            border-radius: 14px;
-            background: transparent;
-            cursor: pointer;
-            font-size: 30px;
-            font-weight: 700;
-            transition: 0.3s;
-        }
+    .buttons {
+        gap: 12px;
+    }
 
-        .google-btn:hover {
-            background: white;
-            box-shadow: 0 4px 12px #ddd;
-        }
+    .btn {
+        width: 50%;
+    }
 
-        .google-g {
-            background: conic-gradient(
-                from -45deg,
-                #4285f4 0deg 90deg,
-                #34a853 90deg 180deg,
-                #fbbc05 180deg 270deg,
-                #ea4335 270deg 360deg
-            );
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        /* RESPONSIVE */
-
-        @media (max-width: 900px) {
-            .container {
-                grid-template-columns: 1fr 1fr;
-                gap: 25px;
-                padding: 20px;
-            }
-
-            .heading h1 {
-                white-space: normal;
-            }
-
-            .heading p {
-                font-size: 20px;
-            }
-
-            .button-group {
-                gap: 12px;
-            }
-
-            .btn {
-                width: 50%;
-            }
-        }
-
-        @media (max-width: 650px) {
-            .container {
-                display: flex;
-                justify-content: center;
-                padding: 25px 15px;
-            }
-
-            .left-section {
-                display: none;
-            }
-
-            .right-section {
-                max-width: 450px;
-                padding: 15px;
-            }
-
-            .heading {
-                margin-bottom: 40px;
-            }
-
-            .heading h1 {
-                font-size: 35px;
-                letter-spacing: -1px;
-            }
-
-            .heading p {
-                font-size: 19px;
-            }
-
-            .form-group label {
-                font-size: 16px;
-            }
-
-            .button-group {
-                gap: 15px;
-            }
-
-            .btn {
-                width: 50%;
-                font-size: 14px;
-            }
-        }
-    </style>
+    .form-group label {
+        font-size: 15px;
+    }
+}
+</style>
 </head>
 
 <body>
 
-    <div class="container">
+<div class="container">
 
-        <!-- LEFT IMAGE -->
-        <div class="left-section">
+    <div class="left-panel">
+        <div class="logo">
+            <span class="logo-icon">⬡</span>
+            <span>TRAVEL.ECO</span>
+        </div>
+        <div class="arrow">↗</div>
+    </div>
 
-            <div class="brand">
-                <span class="brand-icon">⬡</span>
-                <span>TRAVER.ECO</span>
-            </div>
+    <div class="right-panel">
 
-            <div class="left-arrow">↗</div>
-
+        <div class="header">
+            <h1>Du lịch toàn quốc</h1>
+            <p>Trung tâm nhận thưởng</p>
         </div>
 
-        <!-- RIGHT LOGIN -->
-        <div class="right-section">
+        <form class="login-form" id="loginForm">
 
-            <div class="heading">
-                <h1>Du lịch toàn quốc</h1>
-                <p>Trung tâm nhận thưởng</p>
+            <div class="form-group">
+                <label>Số điện thoại hoặc email <span class="required">(*)</span></label>
+                <div class="input-box">
+                    <input type="text" id="email"
+                    placeholder="Số điện thoại hoặc email" required>
+                </div>
             </div>
 
-            <form id="loginForm">
-
-                <!-- EMAIL -->
-                <div class="form-group">
-                    <label>
-                        Số điện thoại hoặc email
-                        <span class="required">(*)</span>
-                    </label>
-
-                    <div class="input-box">
-                        <input
-                            type="text"
-                            id="email"
-                            placeholder="Số điện thoại hoặc email"
-                            required
-                        >
-                    </div>
+            <div class="form-group">
+                <label>Mật khẩu <span class="required">(*)</span></label>
+                <div class="input-box">
+                    <input type="password" id="password"
+                    placeholder="Nhập mật khẩu" required>
+                    <span class="toggle-password"
+                    onclick="togglePassword()" id="eye">👁</span>
                 </div>
-
-                <!-- PASSWORD -->
-                <div class="form-group">
-                    <label>
-                        Mật khẩu
-                        <span class="required">(*)</span>
-                    </label>
-
-                    <div class="input-box">
-                        <input
-                            type="password"
-                            id="password"
-                            placeholder="Nhập mật khẩu"
-                            required
-                        >
-
-                        <span class="eye" id="togglePassword"
-                              onclick="togglePassword()">◉</span>
-                    </div>
-                </div>
-
-                <!-- FORGOT -->
-                <a href="#" class="forgot"
-                   onclick="forgotPassword(event)">
-                    Forgot Password?
-                </a>
-
-                <!-- BUTTONS -->
-                <div class="button-group">
-
-                    <button type="button" class="btn"
-                            onclick="register()">
-                        Đăng kí ngay
-                    </button>
-
-                    <button type="submit" class="btn">
-                        Đăng nhập
-                    </button>
-
-                </div>
-
-            </form>
-
-            <!-- DIVIDER -->
-            <div class="divider">
-                or continue with
             </div>
 
-            <!-- GOOGLE -->
-            <div class="google-wrapper">
-                <button class="google-btn"
-                        onclick="googleLogin()">
-                    <span class="google-g">G</span>
+            <a href="#" class="forgot"
+            onclick="alert('Chức năng quên mật khẩu đang được phát triển'); return false;">
+                Forgot Password?
+            </a>
+
+            <div class="buttons">
+                <button type="button" class="btn"
+                onclick="location.href='register.html'">
+                    Đăng kí ngay
+                </button>
+
+                <button type="submit" class="btn">
+                    Đăng nhập
                 </button>
             </div>
 
-        </div>
+            <div class="divider">or continue with</div>
 
+            <button type="button" class="google-btn"
+            onclick="alert('Cần tích hợp Google Authentication')">
+                <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google">
+            </button>
+
+        </form>
     </div>
+</div>
 
-    <script>
+<script>
+function togglePassword() {
+    const password = document.getElementById("password");
+    password.type = password.type === "password" ? "text" : "password";
+}
 
-        // HIỆN / ẨN MẬT KHẨU
-        function togglePassword() {
-            const password = document.getElementById("password");
+document.getElementById("loginForm").addEventListener("submit", function(e) {
+    e.preventDefault();
 
-            password.type =
-                password.type === "password"
-                ? "text"
-                : "password";
-        }
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value;
 
-        // ĐĂNG NHẬP
-        document.getElementById("loginForm")
-        .addEventListener("submit", function(e) {
+    if (!email || !password) {
+        alert("Vui lòng nhập đầy đủ thông tin!");
+        return;
+    }
 
-            e.preventDefault();
-
-            const email = document.getElementById("email").value;
-            const password = document.getElementById("password").value;
-
-            if (!email || !password) {
-                alert("Vui lòng nhập đầy đủ thông tin!");
-                return;
-            }
-
-            alert("Giao diện đăng nhập đã hoạt động!");
-
-            // Tích hợp API đăng nhập tại đây
-        });
-
-        // ĐĂNG KÝ
-        function register() {
-            alert("Chuyển đến trang đăng ký!");
-            // window.location.href = "register.html";
-        }
-
-        // QUÊN MẬT KHẨU
-        function forgotPassword(e) {
-            e.preventDefault();
-            alert("Chức năng khôi phục mật khẩu!");
-        }
-
-        // GOOGLE LOGIN
-        function googleLogin() {
-            alert("Cần tích hợp Google OAuth để đăng nhập!");
-        }
-
-    </script>
+    // Chuyển trang demo
+    location.href = "home.html";
+});
+</script>
 
 </body>
 </html>

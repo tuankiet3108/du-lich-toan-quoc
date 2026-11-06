@@ -368,3 +368,212 @@ document.getElementById("loginForm").addEventListener("submit", function(e) {
 
 </body>
 </html>
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TRAVEL.ECO - Đăng ký</title>
+<style>
+* {
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg,#ffe2d4,#fff);
+}
+
+.form-box {
+    width: 400px;
+    max-width: 92%;
+    padding: 40px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 5px 30px #0001;
+}
+
+h1 {
+    text-align: center;
+    color: #ff793c;
+}
+
+input {
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    border: 1px solid #aaa;
+    border-radius: 10px;
+    outline: none;
+}
+
+input:focus {
+    border-color: #ff793c;
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 10px;
+    background: #ff793c;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #ed6228;
+}
+
+p {
+    text-align: center;
+}
+
+a {
+    color: #ff793c;
+    text-decoration: none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="form-box">
+
+    <h1>TRAVEL.ECO</h1>
+    <h2>Đăng ký tài khoản</h2>
+
+    <form id="registerForm">
+
+        <input type="text" placeholder="Họ và tên" required>
+
+        <input type="text"
+        placeholder="Số điện thoại hoặc email" required>
+
+        <input type="password"
+        id="pass1" placeholder="Mật khẩu" required>
+
+        <input type="password"
+        id="pass2" placeholder="Nhập lại mật khẩu" required>
+
+        <button type="submit">Tạo tài khoản</button>
+
+    </form>
+
+    <p>Đã có tài khoản?
+        <a href="index.html">Đăng nhập ngay</a>
+    </p>
+
+</div>
+
+<script>
+document.getElementById("registerForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const p1 = document.getElementById("pass1").value;
+    const p2 = document.getElementById("pass2").value;
+
+    if (p1 !== p2) {
+        alert("Mật khẩu nhập lại không khớp!");
+        return;
+    }
+
+    alert("Đăng ký demo thành công!");
+    location.href = "index.html";
+});
+</script>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TRAVEL.ECO - Trang chủ</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #fff8f4;
+}
+
+header {
+    background: #ff793c;
+    color: white;
+    padding: 20px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h2 {
+    margin: 0;
+}
+
+header a {
+    color: white;
+    text-decoration: none;
+}
+
+main {
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 30px;
+}
+
+h1 {
+    color: #ff793c;
+    font-size: 40px;
+}
+
+button {
+    padding: 14px 30px;
+    background: #ff793c;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #ed6228;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h2>TRAVEL.ECO</h2>
+    <a href="index.html">Đăng xuất</a>
+</header>
+
+<main>
+    <h1>Chào mừng đến với TRAVEL.ECO!</h1>
+    <p>Khám phá những hành trình du lịch tuyệt vời.</p>
+
+    <button onclick="location.href='index.html'">
+        Đăng xuất
+    </button>
+</main>
+
+</body>
+</html>
